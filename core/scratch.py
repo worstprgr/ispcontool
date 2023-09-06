@@ -4,6 +4,7 @@ import datetime as dt
 import time
 from core.exceptions import TimeUtilsExc
 
+
 date1 = dt.time(14, 50, 0)
 date2 = dt.time(15, 0, 0)
 

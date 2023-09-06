@@ -39,5 +39,6 @@ class Main:
 
 
 if __name__ == '__main__':
-    m = Main()
-    m.main_routine()
+    #m = Main()
+    #m.main_routine()
+    print('Main')

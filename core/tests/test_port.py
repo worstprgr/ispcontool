@@ -1,7 +1,13 @@
+"""
+Had to use a hack, to inject the **core** folder to the sys.path.
+Although the module **sysextend** isn't in use, it still imports the
+whole content.
+"""
+import sysextend
 import unittest
-from core import portutils as pu
+from core import portutils
 
-p = pu.PortUtils()
+p = portutils.PortUtils()
 
 
 class TestVerifyConnection(unittest.TestCase):
@@ -51,6 +57,7 @@ class TestVerifyConnection(unittest.TestCase):
         self.assertEqual(scenario2, False)
         self.assertEqual(scenario3, False)
         self.assertEqual(scenario4, False)
+        print('yes')
 
     def test_con_check(self):
         """

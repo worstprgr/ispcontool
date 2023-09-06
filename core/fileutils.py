@@ -3,7 +3,7 @@
 import pathlib
 import os
 from datetime import datetime as dt
-import config as cfg
+import core.config as cfg
 
 
 class FileUtils:
@@ -56,5 +56,6 @@ class FileUtils:
 
 
 if __name__ == '__main__':
-    fu = FileUtils()
-    fu.write_to_csv('test123')
+    #fu = FileUtils()
+    #fu.write_to_csv('test123')
+    print('File:', __file__)
