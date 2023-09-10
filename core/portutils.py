@@ -1,11 +1,15 @@
 #!/usr/bin/env python 
 # -*- coding:utf-8 -*-
 import socket
+import core.logger
+
+log = core.logger.Logger(__file__)
 
 
 class PortUtils:
     def __init__(self):
         self.timeout: int = 1
+        log.this(0, f'Portscan Timeout: {self.timeout}')
 
     def con_check(self, hosts: list, port=80, test=False) -> bool:
         """
@@ -18,14 +22,18 @@ class PortUtils:
         :return: **bool**
         """
         offline: int = 0
+        log.this(0, 'Starting Portscan ...')
         for host in hosts:
             server_status: bool = self.scan_port(host, port, test)
             if not server_status:
                 offline += 1
+        log.this(1, 'Portscan done')
 
         if offline == len(hosts):
+            log.this(1, 'Portscan: all hosts are offline')
             return False
         else:
+            log.this(1, 'Portscan: at least one host is online')
             return True
 
     def scan_port(self, host: str, port: int, test=False) -> bool:
@@ -66,9 +74,3 @@ class PortUtils:
         else:
             # "simulating" socket.gaierror
             return False
-
-
-if __name__ == '__main__':
-    hosts_list: list = ['google.com', 'x.com', 'facebook.com']
-    vc = PortUtils()
-    print(vc.con_check(hosts_list))

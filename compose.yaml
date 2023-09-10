@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  ispcontool:
+    image: ispctl:latest
+    restart: always
+    logging:
+      driver: local
+      options:
+          max-size: "10m"
+          max-file: "5"
+    volumes:
+      - /var/lib/docker/volumes/ispcontool/logs:/ispcontool/logs
+      - /var/lib/docker/volumes/ispcontool/csv:/ispcontool/exports/csv

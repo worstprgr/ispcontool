@@ -6,8 +6,12 @@ whole content.
 import sysextend
 import unittest
 from core import portutils
+import core.logger
 
+log = core.logger.Logger(__file__)
+log.file_save = False
 p = portutils.PortUtils()
+online_mode = False
 
 
 class TestVerifyConnection(unittest.TestCase):
@@ -21,9 +25,6 @@ class TestVerifyConnection(unittest.TestCase):
         Basically it's a mock method that bypasses the port connection via
         the socket library.
         """
-        # offline or online mode
-        online_mode = False
-
         # GIVEN
         port = 80
         url_online = [
@@ -53,11 +54,10 @@ class TestVerifyConnection(unittest.TestCase):
         scenario4 = p.scan_port(url_special_chars[1], port, test=test_mode)
 
         # THEN
-        self.assertEqual(scenario1, True)
-        self.assertEqual(scenario2, False)
-        self.assertEqual(scenario3, False)
-        self.assertEqual(scenario4, False)
-        print('yes')
+        self.assertEqual(True, scenario1)
+        self.assertEqual(False, scenario2)
+        self.assertEqual(False, scenario3)
+        self.assertEqual(False, scenario4)
 
     def test_con_check(self):
         """
@@ -72,9 +72,6 @@ class TestVerifyConnection(unittest.TestCase):
         Basically it's a mock method that bypasses the port connection via
         the socket library.
         """
-        # offline or online mode
-        online_mode = False
-
         # GIVEN
         urls_all_online = [
             'google.com',
@@ -123,10 +120,10 @@ class TestVerifyConnection(unittest.TestCase):
         scenario4 = p.con_check(urls_zero_online[start::2], test=test_mode)
 
         # THEN
-        self.assertEqual(scenario1, True)
-        self.assertEqual(scenario2, True)
-        self.assertEqual(scenario3, True)
-        self.assertEqual(scenario4, False)
+        self.assertEqual(True, scenario1)
+        self.assertEqual(True, scenario2)
+        self.assertEqual(True, scenario3)
+        self.assertEqual(False, scenario4)
 
 
 if __name__ == '__main__':
