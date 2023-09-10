@@ -6,3 +6,6 @@
 /dockerimage/
 /exports/
 /logs/
+/core/tests/logs/
+/core/scratch.py
+scratch.py
