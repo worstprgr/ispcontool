@@ -3,3 +3,6 @@
 /__pycache__
 /.git
 *cred*
+/dockerimage/
+/exports/
+/logs/
