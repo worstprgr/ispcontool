@@ -22,5 +22,5 @@ jobs:
         python-version: "3.11"
     - name: Test with unittest
       run: |
-        cd /ispcontool/core/tests
-        python -m unittest
+        cd ispcontool
+        python -m unittest discover -s ./tests -p 'test_*.py'
