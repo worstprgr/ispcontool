@@ -6,11 +6,12 @@ from core import timeutils
 from core import fileutils
 from core import portutils
 from core import datautils
+import core.conutils
 import core.config
 import core.logger
 
 log = core.logger.Logger(__file__)
-cfg = core.config.Interface().config
+cfg = core.config.Interface()
 
 
 class Main:
@@ -20,6 +21,11 @@ class Main:
         self.time_utl = timeutils.TimeUtils()
         self.sig_utl = signalutils.Terminate()
         self.data_utl = datautils.DataUtils()
+        self.is_container: bool = core.conutils.is_container()
+        if not self.is_container:
+            log.this(1, 'Using Manual Config')
+        else:
+            log.this(1, 'Using Docker Config')
 
     def main_routine(self):
         log.this(1, 'Started Main Routine')
@@ -45,7 +51,7 @@ class Main:
                 if not hosts_online:
                     # 3. Fact: Hosts are offline
                     self.sub_routine()
-            self.sig_utl.sleep(cfg.MAIN_ROUTINE_SLEEP)
+            self.sig_utl.sleep(cfg.config().MAIN_ROUTINE_SLEEP)
 
     def sub_routine(self):
         log.this(1, 'Started Sub Routine')
@@ -62,7 +68,7 @@ class Main:
                 self.file_utl.write_to_csv(csv_out)
                 print('CSV\t', csv_out)
                 break
-            self.sig_utl.sleep(cfg.SUB_ROUTINE_SLEEP, cfg.SUB_RATE)
+            self.sig_utl.sleep(cfg.config().SUB_ROUTINE_SLEEP, cfg.config().SUB_RATE)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,12 @@
+# folders
+.idea
+.github
+__pycache__
+dockerimage
+logs
+venv
+# files
+.gitignore
+Dockerfile
+compose.yaml
+README.md

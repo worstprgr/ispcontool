@@ -46,11 +46,8 @@ false-negative responses.
 ---
 ## Usage
 ### Docker
-If you want to build a Docker image, you have to perform some steps in advance, before you can build it with the
-contained **Dockerfile**.  
-
-1. **/core/config.py** -> Change the variable **docker_conf** to **True**
-2. **./Dockerfile** -> (Optional) Define the environment variables to your needs
+If you want to build a Docker image, there's a **Dockerfile** in the root folder.
+Just adjust the environment variables inside the file.
 
 ### Environment Variables
 
@@ -110,11 +107,14 @@ If you define **SUB_RATE=1.5** and **MAIN_ROUTINE_SLEEP=30**, the main routine d
 
 ---
 ### Without Docker
-For using it without Docker, check the config file first:
-- **/core/config.py** -> The variable **docker_conf** should be **False**
+For using it without Docker you have to execute the **setup.py** once, so the base path gets updated:
+```commandline
+python setup.py
+```
 
-After that change the time values to your needs. More information about the time values, 
-read the section "Environment Variables".
+After that head to **core/config.py** and modify the variable **HOSTS** to your needs. Second, head to
+**core/configs/default.py** and change the time values to your needs.  
+For more information about the time values, read the section "Environment Variables".
 
 Now just start the **./main.py** file.
 ```commandline

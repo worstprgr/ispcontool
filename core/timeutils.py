@@ -5,8 +5,8 @@ import core.config
 import core.exceptions
 import core.logger
 
-cfg = core.config.Interface().config
 log = core.logger.Logger(__file__)
+cfg = core.config.Interface().config()
 
 
 class TimeUtils:

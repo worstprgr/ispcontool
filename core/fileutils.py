@@ -6,9 +6,10 @@ import sys
 from datetime import datetime as dt
 import core.config
 import core.logger
+import core.paths as paths
 
 log = core.logger.Logger(__file__)
-cfg = core.config.Interface().config
+cfg = core.config.Interface().config()
 
 
 class FileUtils:
@@ -16,10 +17,7 @@ class FileUtils:
         self.system = sys.platform.lower()
         self.dt_format_to_year: str = '%Y'
         self.dt_now_year = dt.now().strftime(self.dt_format_to_year)
-        self.csv_file_path: str = f'{self.os_path(cfg.BASE_DIR.strip("/"))}/' \
-                                  f'{cfg.EXPORT_DIR.strip("/")}/' \
-                                  f'{cfg.CSV_FOLDER.strip("/")}/'
-
+        self.csv_file_path: str = paths.CSV_FOLDER + '/'
         self.csv_file_name: str = f'{cfg.CSV_FILENAME_PREFIX}' \
                                   f'_{cfg.CSV_FILENAME_MID}' \
                                   f'_{self.dt_now_year}' \
@@ -70,6 +68,5 @@ class FileUtils:
         pathlib.Path(path).mkdir(parents=True, exist_ok=True)
 
     def __create_folders_export_csv(self) -> None:
-        export_dir: str = f'{self.os_path(cfg.BASE_DIR)}/{cfg.EXPORT_DIR}'
-        csv_dir: str = f'{export_dir}/{cfg.CSV_FOLDER}'
-        self.__create_folder(csv_dir)
+        export_csv_dir: str = paths.CSV_FOLDER
+        self.__create_folder(export_csv_dir)

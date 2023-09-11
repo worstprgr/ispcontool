@@ -1,14 +1,23 @@
 #!/usr/bin/env python 
 # -*- coding:utf-8 -*-
-import core.cfg_default
-import core.cfg_docker
-
-docker_conf: bool = True
+import core.configs.default
+import core.configs.docker
+import core.conutils
 
 
 class Interface:
     def __init__(self):
-        if not docker_conf:
-            self.config = core.cfg_default.Conf()
+        self.is_container: bool = core.conutils.is_container()
+
+        # Hosts to check
+        self.HOSTS: list[str, ...] = [
+            'google.com',
+            'x.com',
+            'duckduckgo.com'
+        ]
+
+    def config(self):
+        if not self.is_container:
+            return core.configs.default.Conf()
         else:
-            self.config = core.cfg_docker.Conf()
+            return core.configs.docker.Conf()
