@@ -20,6 +20,10 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.11"
+    - name: dir overview
+      run: |
+        ls
+        cd / && ls
     - name: Test with unittest
       run: |
         cd ispcontool
