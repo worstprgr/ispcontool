@@ -5,9 +5,9 @@ services:
     image: ispctl:latest
     restart: always
     environment:
-      - TIME_INTERVAL=1
+      - TIME_INTERVAL=4
       - TIME_MODE=H
-      - TIME_TOLERANCE=10
+      - TIME_TOLERANCE=5
       - MAIN_ROUTINE_SLEEP=60
       - SUB_ROUTINE_SLEEP=120
       - SUB_RATE=1
