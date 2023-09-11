@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
 
     steps:
     - uses: actions/checkout@v3
@@ -26,5 +29,5 @@ jobs:
         cd / && ls
     - name: Test with unittest
       run: |
-        cd ispcontool
-        python -m unittest discover -s ./tests -p 'test_*.py'
+        cd core/tests/
+        python -m unittest
