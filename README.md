@@ -34,7 +34,7 @@ host -C x.com
 
 Using Ping has the big disadvantage, that servers could be configured to block ping requests.
 So you end up with a false-negative response.  
-Performing a explicit scan on port 80 - where the HTTP stream goes through - should not result into
+Performing an explicit scan on port 80 - where the HTTP stream goes through - should not result into
 false-negative responses.
 
 ---
