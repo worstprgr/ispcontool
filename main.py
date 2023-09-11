@@ -23,13 +23,22 @@ class Main:
 
     def main_routine(self):
         log.this(1, 'Started Main Routine')
+        SUB_ROUTINE_LOCKED: bool = False
         while not self.sig_utl.term_status:
+            log.this(0, f'Sub Routine Locked: {SUB_ROUTINE_LOCKED}')
             CURRENT_TIME = dt.now()
 
             # 1. Question: Is it the right time?
             cp_time = self.time_utl.main(CURRENT_TIME)
 
-            if cp_time:
+            if not cp_time:
+                SUB_ROUTINE_LOCKED = False
+                log.this(1, 'Sub Routine is free')
+
+            if cp_time and not SUB_ROUTINE_LOCKED:
+                SUB_ROUTINE_LOCKED = True
+                log.this(1, 'Sub Routine is locked')
+
                 # 2. Question: Is one of the hosts offline?
                 hosts_online: bool = self.port_utl.con_check(cfg.HOSTS)
 

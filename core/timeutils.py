@@ -3,8 +3,10 @@
 import datetime as dt
 import core.config
 import core.exceptions
+import core.logger
 
 cfg = core.config.Interface().config
+log = core.logger.Logger(__file__)
 
 
 class TimeUtils:
@@ -38,7 +40,9 @@ class TimeUtils:
         :return: True, if the current minute-value matches a value from the list. False, if not.
         """
         polling_rate = self.set_polling_rate(interval, mode)
-        return self.time_check(current_dt, polling_rate, tolerance, mode)
+        out = self.time_check(current_dt, polling_rate, tolerance, mode)
+        log.this(1, f'method: test_main -> {out}')
+        return out
 
     def set_polling_rate(self, interval: int, time_mode: str) -> list[int, ...]:
         """

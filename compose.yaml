@@ -4,11 +4,13 @@ services:
   ispcontool:
     image: ispctl:latest
     restart: always
-    logging:
-      driver: local
-      options:
-          max-size: "10m"
-          max-file: "5"
+    environment:
+      - TIME_INTERVAL=1
+      - TIME_MODE=H
+      - TIME_TOLERANCE=10
+      - MAIN_ROUTINE_SLEEP=60
+      - SUB_ROUTINE_SLEEP=120
+      - SUB_RATE=1
     volumes:
       - /var/lib/docker/volumes/ispcontool/logs:/ispcontool/logs
       - /var/lib/docker/volumes/ispcontool/csv:/ispcontool/exports/csv
