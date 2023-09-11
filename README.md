@@ -1,7 +1,9 @@
 # ISP Connection Tool
-## Status: In Development
+## Status: In Development  
+
 This tool is currently in development. Currently, all functionalities are implemented, 
 but it has to be tested and the documentation is missing in some modules.
+
 ---
 ## Description
 This tool checks your internet connection every **n** minutes or hours. 
@@ -29,10 +31,12 @@ host -C x.com
 > x.com has SOA record **alexia.ns.cloudflare.com**
 
 ### Ping vs Port Scan
+
 Using Ping has the big disadvantage, that servers could be configured to block ping requests.
 So you end up with a false-negative response.  
 Performing a explicit scan on port 80 - where the HTTP stream goes through - should not result into
 false-negative responses.
+
 ---
 
 ## Dependencies
