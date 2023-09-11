@@ -3,6 +3,8 @@
 import datetime as dt
 import pathlib
 import sys
+import core.paths as paths
+
 
 current_ts: str = dt.datetime.now().strftime('%y-%m-%d_%H%M%S')
 
@@ -19,7 +21,7 @@ class Logger:
         self.ts: str = current_ts
         self.file_save: bool = True
         self.file_name: str = f'log_{self.ts}.log'
-        self.file_path: str = './logs'
+        self.file_path: str = paths.LOG_DIR
         self.file_full_path: str = f'{self.file_path}/{self.file_name}'
         self.std: bool = True
         self.max_levels = len(self.log_levels.keys())

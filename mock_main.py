@@ -8,6 +8,7 @@ from core import fileutils
 from core import portutils
 from core import datautils
 from core import mocks
+import core.conutils
 import core.logger
 
 log = core.logger.Logger(__file__)
@@ -24,6 +25,12 @@ class MockMain:
         self.sig_utl = signalutils.Terminate()
         self.data_utl = datautils.DataUtils()
         self.mocks = mocks.Mocks()
+        self.is_container: bool = core.conutils.is_container()
+        if not self.is_container:
+            log.this(1, 'Using Manual Config')
+        else:
+            log.this(1, 'Using Docker Config')
+
         # Test Data
         self.main_routine_sleep = 1
         self.sub_routine_sleep = 1

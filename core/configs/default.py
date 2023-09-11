@@ -1,20 +1,13 @@
 #!/usr/bin/env python 
 # -*- coding:utf-8 -*-
 import core.logger
+import os
 
 log = core.logger.Logger(__file__)
 
 
 class Conf:
     def __init__(self):
-        log.this(0, 'Using Manual Config')
-        #
-        # PATHS
-        #
-        self.BASE_DIR: str = 'M:/PYTHON/ispcontool'
-        # self.BASE_DIR: str = 'ispcontool'
-        self.EXPORT_DIR: str = 'exports'
-
         #
         # CSV
         #
@@ -22,7 +15,6 @@ class Conf:
         File name format will be:
            isp_connectivity-report_2023.csv
         """
-        self.CSV_FOLDER: str = 'csv'
         self.CSV_FILENAME_PREFIX: str = 'isp'
         self.CSV_FILENAME_MID: str = 'connectivity-report'
         self.CSV_FILE_EXTENSION: str = 'csv'
@@ -34,15 +26,6 @@ class Conf:
         self.TIME_INTERVAL = 30  # n times
         self.TIME_MODE = 'H'  # D -> per day / H -> per hour
         self.TIME_TOLERANCE = 1  # minutes
-
-        #
-        # Hosts to check
-        #
-        self.HOSTS: list[str, ...] = [
-            'google.com',
-            'x.com',
-            'duckduckgo.com'
-        ]
 
         #
         # Routine config
