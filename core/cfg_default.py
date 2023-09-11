@@ -11,8 +11,8 @@ class Conf:
         #
         # PATHS
         #
-        # self.BASE_DIR: str = 'M:/PYTHON/ispcontool'
-        self.BASE_DIR: str = 'ispcontool'
+        self.BASE_DIR: str = 'M:/PYTHON/ispcontool'
+        # self.BASE_DIR: str = 'ispcontool'
         self.EXPORT_DIR: str = 'exports'
 
         #

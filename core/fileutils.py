@@ -42,6 +42,11 @@ class FileUtils:
     def os_path(self, path: str) -> str:
         if self.system == 'linux' or self.system == 'darwin':
             return '/' + path
+        elif self.system == 'win32':
+            return path
+        else:
+            log.this(2, 'Unknown OS, returning the standard path prefix.')
+            return path
 
     def write_to_csv(self, data: str) -> None:
         log.this(0, 'Writing data to csv ...')
