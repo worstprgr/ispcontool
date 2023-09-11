@@ -13,9 +13,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./app
 
     steps:
     - uses: actions/checkout@v3
@@ -26,7 +23,6 @@ jobs:
     - name: dir overview
       run: |
         ls
-        cd / && ls
     - name: Test with unittest
       run: |
         cd core/tests/
