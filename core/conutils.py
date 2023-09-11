@@ -4,6 +4,10 @@ import sys
 
 
 def is_container():
+    """
+    Checking the current platform if it's Linux or Windows.
+    :return: None
+    """
     current_platform: str = sys.platform.lower()
 
     if current_platform in ['linux', 'darwin']:
