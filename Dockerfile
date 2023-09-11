@@ -46,4 +46,4 @@ RUN chmod -R u+rwx $dWDIR
 
 WORKDIR $dWDIR
 
-CMD ["python3", "/ispcontool/main.py"]
+CMD ["python3", "-u", "/ispcontool/main.py"]
