@@ -23,9 +23,9 @@ class Conf:
         #
         # Polling rates & interval
         #
-        self.TIME_INTERVAL = 30  # n times
+        self.TIME_INTERVAL = 4  # n times
         self.TIME_MODE = 'H'  # D -> per day / H -> per hour
-        self.TIME_TOLERANCE = 1  # minutes
+        self.TIME_TOLERANCE = 5  # minutes
 
         #
         # Routine config

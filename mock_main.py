@@ -34,9 +34,9 @@ class MockMain:
         # Test Data
         self.main_routine_sleep = 1
         self.sub_routine_sleep = 1
-        self.time_interval = 4
+        self.time_interval = 20
         self.time_mode = 'H'
-        self.time_tolerance = 3
+        self.time_tolerance = 2
         self.test_time = lambda a: dt(2023, 9, 10, 3, a)  # 2023-09-10 03:15:00
         self.test_times = [
             self.test_time(15),  # 2023-09-10 03:15:00
