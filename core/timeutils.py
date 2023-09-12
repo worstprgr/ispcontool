@@ -27,7 +27,9 @@ class TimeUtils:
         :return: True, if the current minute-value matches a value from the list. False, if not.
         """
         polling_rate = self.set_polling_rate(cfg.TIME_INTERVAL, cfg.TIME_MODE)
-        return self.time_check(current_dt, polling_rate, cfg.TIME_TOLERANCE, cfg.TIME_MODE)
+        out = self.time_check(current_dt, polling_rate, cfg.TIME_TOLERANCE, cfg.TIME_MODE)
+        log.this(1, f'method inside the time window: {out}')
+        return out
 
     def test_main(self, current_dt: dt.datetime, interval: int, mode: str, tolerance: int) -> bool:
         """
