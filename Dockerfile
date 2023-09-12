@@ -12,6 +12,7 @@ RUN apt install -y python3
 
 # Utils
 RUN apt install -y nano
+RUN apt install -y tcptrack
 
 # Project Paths
 ENV dWDIR=/ispcontool/
